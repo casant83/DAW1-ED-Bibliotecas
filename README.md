@@ -24,7 +24,9 @@ A continuación veremos como:
 - Hacer enlace estático
 - Hacer enlace dinámico
 
-Cuando desarrollamos un programa, éste, además de compilarse, necesita enlazarse con la biblioteca estándar del lenguaje y otras bibliotecas propias del desarrollador. 
+Cuando desarrollamos un programa, éste, además de compilarse, necesita enlazarse con la biblioteca estándar del lenguaje y otras bibliotecas propias del desarrollador.
+
+_BE: no DLL, enlazamos dentro de la aplicación y está siempre ahí enlazada. Repite mucho código? Si se actualiza o cambia algo hay que volver a compilar, ejecutar... No se utilizan mucho.Algún portable (aunque incluso los portables empiezan a usar BD). BD: DLL. Suelen venir con el SO y las utilizan varias aplicaciones. Plugin: no se cargan al inicio de la aplicación sino cuando van haciendo falta (tb se llaman: extensiones, complementos DLL también)_
 
 En los lenguajes compilados se distingue dos __tipos de enlazado con una biblioteca__:
 - __Estático__
@@ -113,6 +115,8 @@ Codigo en:
 ```
 gcc  -o  plug  plug.c  -ldl
 ```
+_-ldl hace falta para cargar el plugin_
+
   Además de enlazar con la biblioteca estándar de C, debemos enlazar con la biblioteca adicional `dl` que nos permite la carga de código binario en tiempo de ejecución.
 
 2. Ejecutamos programa `plug`
@@ -132,6 +136,7 @@ Codigo en:
 ```
 gcc  -o  main  main.c  libaritmetica.a 
 ```
+_el programa es el mismo y a la hora de enlazar será distinto si es dinamico o estático. y luego ocupará más o menos según D o E_
 
 2. Comprobamos vínculos dinámicos
 
@@ -217,6 +222,8 @@ Ya podemos copiar `main` y `libs/libaritmetica.so` juntos y `main` siempre encon
 ## Java
 
 ### Crear paquete jar con la biblioteca
+
+_El Java solo hay enlaces dinámicos_
 
 0. Creamos directorio `aritmetica`
 
