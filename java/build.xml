@@ -14,7 +14,7 @@
 
 
     <!-- Creamos directorios para el resultado de la compilación --> 
-    <target name="init">
+    <target name="init"> <!--MN:target objetivo-->
       <mkdir dir="${classes.dir}"/>
       <mkdir dir="${jar.dir}"/>
     </target>
